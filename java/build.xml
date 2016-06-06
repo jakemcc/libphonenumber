@@ -3,6 +3,7 @@
 <project name="libphonenumber" default="compile">
   <property name="libphonenumber.src.dir" value="libphonenumber/src"/>
   <property name="libphonenumber.test.dir" value="libphonenumber/test"/>
+  <property name="libphonenumber.lite.src.dir" value="libphonenumber/lite/src"/>
   <property name="carrier.src.dir" value="carrier/src"/>
   <property name="carrier.test.dir" value="carrier/test"/>
   <property name="geocoder.src.dir" value="geocoder/src"/>
@@ -42,6 +43,20 @@
       <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
       <arg value="--copyright=2010"/>
       <arg value="--lite-build=false"/>
+    </exec>
+  </target>
+
+  <target name="build-phone-metadata-lite">
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="${build.tools.jar}"/>
+      <arg value="BuildMetadataProtoFromXml"/>
+      <arg value="--input-file=${resources.dir}/PhoneNumberMetadata.xml"/>
+      <arg value="--output-dir=${libphonenumber.lite.src.dir}/com/google/i18n/phonenumbers"/>
+      <arg value="--data-prefix=data/PhoneNumberMetadataProto_lite"/>
+      <arg value="--mapping-class=CountryCodeToRegionCodeMap"/>
+      <arg value="--copyright=2010"/>
+      <arg value="--lite-build=true"/>
     </exec>
   </target>
 
