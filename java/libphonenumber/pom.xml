@@ -15,29 +15,13 @@
 
   <build>
     <sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
-        <directory>src/com/google/i18n/phonenumbers/data</directory>
+        <directory>lite/src/com/google/i18n/phonenumbers/data</directory>
         <targetPath>com/google/i18n/phonenumbers/data</targetPath>
       </resource>
     </resources>
-    <testResources>
-      <testResource>
-        <directory>test/com/google/i18n/phonenumbers/data</directory>
-        <targetPath>com/google/i18n/phonenumbers/data</targetPath>
-      </testResource>
-    </testResources>
     <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>com/google/i18n/phonenumbers/SingleFileMetadataSourceImpl.class</exclude>
-            <exclude>com/google/i18n/phonenumbers/data/SingleFilePhoneNumberMetadataProto</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.4.2</version>
